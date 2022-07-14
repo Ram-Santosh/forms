@@ -3,13 +3,23 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import Form from './Activity-1';
 import reportWebVitals from './reportWebVitals';
+// import UnControlledForm from './Activity-2';
 
+//Activity 1
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <Form />
   </React.StrictMode>
 );
+
+//Activity 2
+// const root = ReactDOM.createRoot(document.getElementById('root'));
+// root.render(
+//   <React.StrictMode>
+//     <UnControlledForm />
+//   </React.StrictMode>
+// );
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))

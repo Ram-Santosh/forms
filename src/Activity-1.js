@@ -27,8 +27,11 @@ export default function Form () {
             if ((value.length < 3 || value.length > 15) && value.length > 0){
                 setErrors({...errors,firstNameError:"Length of the first name should be between 3 to 15 letters."})
             }
+            else if (value.length > 0 && !value.match(/^[a-zA-Z]+$/)){
+                setErrors({...errors,firstNameError:"Name should only contain letters."})              
+            }
             else{
-                setErrors({...errors,firstNameError:""})
+                setErrors({...errors,firstNameError:""})  
             }
         }
 
@@ -36,6 +39,9 @@ export default function Form () {
         if (name === "lastName"){
             if ((value.length < 3 || value.length > 15) && value.length > 0){
                 setErrors({...errors,lastNameError:"Length of the last name should be between 3 to 15 letters."})
+            }
+            else if (value.length > 0 && !value.match(/^[a-zA-Z]+$/)){
+                setErrors({...errors,lastNameError:"Name should only contain letters."})              
             }
             else{
                 setErrors({...errors,lastNameError:""})
