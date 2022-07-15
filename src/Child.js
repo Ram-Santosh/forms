@@ -7,8 +7,7 @@ export default function Child () {
 
     var updateCounter = () => {
         if (counter < 10) {
-            counter += 1;
-            setCounter(counter);
+            setCounter(counter=>counter+1)
         }
     }
 
