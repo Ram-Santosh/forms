@@ -8,6 +8,7 @@ export default function UnControlledForm () {
     var securityQuestion = useRef("");
     var securityAnswer = useRef("");
     var bio = useRef("");
+    
     var [errors, setErrors] = useState({
         firstNameError: "",
         lastNameError:"",
@@ -30,23 +31,25 @@ export default function UnControlledForm () {
     }
   
     var handleSubmit = (e) => {
+        e.preventDefault();
+
         var validFirstName = false;
         var validLastName = false;
         var validBio = false;
         var validEmail = false;
         var validSecQues = false;
         var validSecAns = false;
-        e.preventDefault();
+        var copyErrors = {...errors};
         
         //validate firstname
         if ((firstName.current.value.length < 3 || firstName.current.value.length > 15) && firstName.current.value.length > 0){
-            setErrors({...errors,firstNameError:"Length of the first name should be between 3 to 15 letters."})
+            copyErrors.firstNameError = "Length of the first name should be between 3 to 15 letters.";
         }
         else if (firstName.current.value.length > 0 && !firstName.current.value.match(/^[a-zA-Z]+$/)){
-            setErrors({...errors,firstNameError:"Name should only contain letters."})              
+            copyErrors.firstNameError = "Name should only contain letters.";          
         }
         else{
-            setErrors({...errors,firstNameError:""})  
+            copyErrors.firstNameError = "";
             if (firstName.current.value.length > 0 ){
                 validFirstName = true;
             }
@@ -54,13 +57,13 @@ export default function UnControlledForm () {
 
         //validate lastname
         if ((lastName.current.value.length < 3 || lastName.current.value.length > 15) && lastName.current.value.length > 0){
-            setErrors({...errors,lastNameError:"Length of the last name should be between 3 to 15 letters."})
+            copyErrors.lastNameError = "Length of the last name should be between 3 to 15 letters.";
         }
         else if (lastName.current.value.length > 0 && !lastName.current.value.match(/^[a-zA-Z]+$/)){
-            setErrors({...errors,lastNameError:"Name should only contain letters."})              
+            copyErrors.lastNameError = "Name should only contain letters.";            
         }
         else{
-            setErrors({...errors,lastNameError:""})
+            copyErrors.lastNameError = ""
             if (lastName.current.value.length > 0 ){
                 validLastName = true;
             }
@@ -68,10 +71,10 @@ export default function UnControlledForm () {
 
         // Validate bio
         if (bio.current.value.length < 15 && bio.current.value.length > 0){
-            setErrors({...errors,bioError:"Length of the bio should be greater than 15 letters."})
+            copyErrors.bioError = "Length of the bio should be greater than 15 letters.";
         }
         else{
-            setErrors({...errors,bioError:""})
+            copyErrors.bioError = "";
             if (bio.current.value.length > 0 ){
                 validBio = true;
             }
@@ -94,7 +97,7 @@ export default function UnControlledForm () {
             validSecAns = true;
         }
 
-        console.log(errors)
+        setErrors({...copyErrors});
         if (validBio && validEmail && validFirstName && validLastName && validSecAns && validSecQues){
             var form = {"email":email.current.value, 
                         "bio":bio.current.value, 
