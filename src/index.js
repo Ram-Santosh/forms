@@ -3,7 +3,8 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 // import Form from './Activity-1';
 import reportWebVitals from './reportWebVitals';
-import UnControlledForm from './Activity-2';
+// import UnControlledForm from './Activity-2';
+import App from './Activity-3';
 
 //Activity 1
 // const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -14,10 +15,18 @@ import UnControlledForm from './Activity-2';
 // );
 
 //Activity 2
+// const root = ReactDOM.createRoot(document.getElementById('root'));
+// root.render(
+//   <React.StrictMode>
+//     <UnControlledForm />
+//   </React.StrictMode>
+// );
+
+//Activity 3
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <UnControlledForm />
+    <App />
   </React.StrictMode>
 );
 
